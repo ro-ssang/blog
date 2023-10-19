@@ -41,4 +41,66 @@
 
 ### Internet transport protocols services
 
-트랜스포트 계층에서 제공하는 서비스는 TCP와 UDP이다. // 20:45
+* 트랜스포트 계층에서 제공하는 서비스는 TCP와 UDP이다.
+
+* **TCP Service**
+  * Reliable transport between sending and receiving process
+  * Flow control : sender won't overwhelm receiver
+  * Congestion control : throttle sender when network overloaded
+  * Does not provide : timing, minimum throughput guarantee, security
+  * Connection-oriented : setup required between client and server processes
+* UDP Service
+  * Unreliable data transfer between sending and receiving process
+  * Does not provice : reliability, flow control, congestion control, timing, throughput guarantee, security, orconnection setup
+* TCP와 UDP 사이에서 무엇을 사용할지 판단은 신뢰성 있게 전송하는지 안하는지 차이다.
+
+
+
+## Web And HTTP
+
+### HTTP Overview
+
+* HTTP는 Hypertext transfer protocol의 약자이다. 즉, 텍스트인데 링크(동영상, 이미지, ...)들이 있는 텍스트이다.
+* HTTP는 request와 response로 이루어진다.
+* HTTP는 트랜스포트 계층으로부터 TCP 서비스를 제공받는다.
+  * Client initiates TCP connection (creates socket) to server, port 80 -> 운영체제단에서 일어난다.
+  * server acepts TCP connection from client -> 운영체제단에서 일어난다.
+  * HTTP messages(application-layer protocol messages exchanged between browser (HTTP client) and Web server (HTTP server))
+  * TCP connection closed
+* HTTP is "stateless" : server maintains no information about past client requests
+
+### HTTP connections
+
+* Non-persistent HTTP
+  * at most one object sent over TCP connection, connection then closed
+  * downloading multiple objects required multiple connections
+* Persistent HTTP
+  * Multiple objects can be sent over single TCP connection between client, server
+
+> Non-persistent HTTP 와 Persistent HTTP 이미지 첨부
+
+### Non-persistent HTTP : response time
+
+* RTT (definition) : time for small packet to travel from client to server and back
+* HTTP response time:
+  * one RTT to initiate TCP connection
+  * one RTT for HTTP request and first few bytes of HTTP response to return
+  * file transmission time
+  * Non-persistent HTTP response time = 2RTT + file transmission time
+  * HTTP 메세지는 용량이 작아서 무시할 만큼 시간이 적게 걸리지만 file transmission time은 용량이 크기 때문에 file transmission time을 더해준다.
+
+> Non-persistent HTTP : response time 이미지 첨부
+
+### Persistent HTTP
+
+* Non-persistent HTTP Issues :
+  * requires 2 RTTs per object
+  * OS overhead for each TCP connection
+  * browsers often open parallel TCP connections to fetch referenced objects
+* persistent HTTP :
+  * server leaves connection open after sending response
+  * subsequent HTTP messages between same client/server sent over open conneciton
+  * Client sends requests as soon as it encounters a referenced object
+  * as little as on RTT for all the referenced objects
+
+// 45:21
