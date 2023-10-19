@@ -103,4 +103,33 @@
   * Client sends requests as soon as it encounters a referenced object
   * as little as on RTT for all the referenced objects
 
-// 45:21
+### HTTP request message
+
+* two types of HTTP messages : request, response
+
+* most important line of HTTP message is first line
+
+  ```
+  // request header
+  GET /index.html HTTP/1.1\r\n
+  
+  // response header
+  HTTP/1.1 200 OK\r\n
+  ```
+
+### User-server state: cookies
+
+* 쿠키는 stateless를 보완하기 위해 나온 trick이다.
+
+  ![image-20231019200759753](./images/image-20231019200759753.png)
+
+### Web cahces (proxy server)
+
+* goal : satisfy client request without involving origin server
+* User sets browser : Web accesses via cache
+* browser sends all THHP requests to cache
+  * object in cache : cache returns object
+  * else cache requests object from origin server, then returns object to client
+
+* 일관성 문제가 있다.
+
