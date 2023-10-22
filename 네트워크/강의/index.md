@@ -131,5 +131,56 @@
   * object in cache : cache returns object
   * else cache requests object from origin server, then returns object to client
 
-* 일관성 문제가 있다.
+* 캐시를 사용하면 속도는 빨라지지만, 원본에 대한 복제본을 가지고 있기 때문에 일관성 문제가 있다.
 
+![image-20231022170541588](./images/image-20231022170541588.png)
+
+#### Caching example
+
+#### ![image-20231022164526684](./images/image-20231022164526684.png)
+
+#### Caching example : faster access link
+
+![image-20231022170439204](./images/image-20231022170439204.png)
+
+#### Caching example : install local cache
+
+![image-20231022165520494](./images/image-20231022165520494.png)
+
+#### Conditional GET
+
+![image-20231022170319148](./images/image-20231022170319148.png)
+
+## DNS : Domain Name System
+
+![image-20231022172150273](./images/image-20231022172150273.png)
+
+#### DNS : a distributed, hierarchical database
+
+![image-20231022172113433](./images/image-20231022172113433.png)
+
+#### DNS : root name servers
+
+![image-20231022172409933](./images/image-20231022172409933.png)
+
+#### TLD, authoritative servers
+
+![image-20231022172431488](./images/image-20231022172431488.png)
+
+#### Local DNS name server
+
+![image-20231022173225894](./images/image-20231022173225894.png)
+
+#### DNS name resolution example
+
+![image-20231022173619633](./images/image-20231022173619633.png)
+
+#### DNS : caching, updating records
+
+![image-20231022173820639](./images/image-20231022173820639.png)
+
+#### DNS records
+
+![image-20231022173925307](./images/image-20231022173925307.png)
+
+* DNS는 전송계층 서비스 중 UDP를 사용하는데, IP 주소를 알아오는 HTTP 메세지 사이즈가 작고, HTTP 메세지 교환을 위한 준비과정이기 때문에 패킷 손실을 크게 고려하지 않는다.
